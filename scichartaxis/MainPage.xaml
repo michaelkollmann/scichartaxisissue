@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:native="clr-namespace:scichartaxis.Native"
+             x:Class="scichartaxis.MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <native:MeasurementGraphView x:Name="Graph" IsZoomable="False" IsOxygenVisible="True" />
+
+
+        <StackLayout Grid.Row="1">
+            <StackLayout Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Source={Reference Graph}, Path=IsOxygenVisible}" />
+                <Label>Oxygen</Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Source={Reference Graph}, Path=IsTemperatureVisible}" />
+                <Label>Temperature</Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Source={Reference Graph}, Path=IsPressureVisible}" />
+                <Label>Pressure</Label>
+            </StackLayout>
+        </StackLayout>
+
+        <Button Grid.Row="2" Text="Add data" Clicked="Button_Clicked" />
+
+    </Grid>
+
+</ContentPage>
